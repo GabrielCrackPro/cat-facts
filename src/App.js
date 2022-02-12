@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
+import { Typography, Button } from "@material-ui/core";
+import getFacts from "./services/getFacts";
+import "./App.css";
 
 function App() {
+  const [facts, setFacts] = useState("");
+  useEffect(async () => {
+    let catFacts = await getFacts("https://meowfacts.herokuapp.com");
+    let fact = catFacts.data[0];
+    setFacts(fact);
+    console.log(fact);
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Typography variant="h3">Random cat fact:</Typography>
+      <Typography variant="h5">{facts}</Typography>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          location.reload();
+        }}
+      >
+        Get New Cat Fact
+      </Button>
     </div>
   );
 }
