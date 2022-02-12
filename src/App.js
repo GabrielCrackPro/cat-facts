@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import { Typography, Button } from "@material-ui/core";
 import getFacts from "./services/getFacts";
 import "./App.css";
@@ -27,6 +28,7 @@ function App() {
       >
         Get New Cat Fact
       </Button>
+      <Footer />
     </div>
   );
 }
