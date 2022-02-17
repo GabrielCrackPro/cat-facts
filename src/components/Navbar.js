@@ -11,7 +11,9 @@ export default function Navbar() {
           </a>
         </li>
         <li className="nav-item">
-          <a href="/">Github Repository</a>
+          <a href="https://github.com/GabrielCrackPro/cat-facts">
+            Github Repository
+          </a>
         </li>
       </ul>
     </nav>
